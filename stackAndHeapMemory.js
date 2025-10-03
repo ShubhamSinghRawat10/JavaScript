@@ -1,0 +1,27 @@
+// ALL PRIMITIVE DATATYPES USES THE STACK MEMORY , MEANS CPOY OF THE VARIABLE IS BEEN OBTAINED .  
+// ALL NON-PRIMITIVE DATATYPES USES THE HEAP MEMORY , MEANS THE REFERNCE OF THE VARIABLE IS BEEN OBTAINED .
+
+
+// STACK MEMORY :
+let name = "shubh"
+let anothername = name; 
+
+
+anothername = "shubham rawat"
+console.log(name);
+console.log(anothername);  
+// THE VALUE DID'NT CHANGE IN THE NAME VARIBLE BECAUSE IT IS IN THE STACK MEMORY IN WHICH IT PASSES THE COPY OF THE VARIABLE AND DID'NT CHANGE ON THE ORIGINAL VALUE ...
+
+
+// HEAP MEMORY :
+let userone = {
+    email:"shubh@13",
+    upi : "user@abyl"
+}
+
+let usertwo = userone
+usertwo.email = "shubhamrawat@123" ;
+
+console.log(userone);
+console.log(usertwo);
+    // THE VALUE IS CHANGED IN THE BOTH THE EMAIL'S BECAUSE IN THE HEAP MEMORY THE USERTWO WILL GET THE REFERNCE VALUE OF THE USERONE NOT THE COPIED VALUE ..
