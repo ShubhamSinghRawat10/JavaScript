@@ -28,3 +28,15 @@ Here you’ll find:
 
 ## 📂 Repo Structure
 
+🚀 Welcome to my JavaScript Learning Journey Repo! 🌐✨ This repository is my daily log 📅 of learning, practicing, and exploring JavaScript, one of the most powerful and widely used languages in web development. 💻 My goal is to stay consistent, improve problem-solving, and strengthen both fundamentals and advanced concepts step by step.
+
+---
+
+## 🚀 How to Run
+
+Clone the repo and run any file with Node.js:
+
+```bash
+git clone https://github.com/ShubhamSinghRawat10/JavaScript.git
+cd JavaScript
+node filename.js
