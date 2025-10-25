@@ -1,3 +1,6 @@
+//Defination: A function is a block of code designed to perform a particular task.
+
+
 //! we will learn how to create functions in javascript
 
 // function declaration
