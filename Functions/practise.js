@@ -27,5 +27,5 @@ function sum(num1 , num2){
     return result;
 }
 let add = sum(5,4);
-console.log("Multiplication is : ", add);
+console.log("sum of is : ", add);
 
