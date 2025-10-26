@@ -35,3 +35,6 @@ function userlogin(user = "SAM"){ // Default Parameter
     }
     return ` ${user} Welcome Back! `; // Template literal to include the username
 }
+
+
+//!  If we call a function in function call ,we don,t pass any argument we can not determine the datatype of a variable in javascript
