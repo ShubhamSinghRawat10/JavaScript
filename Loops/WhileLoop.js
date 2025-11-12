@@ -1,4 +1,4 @@
-// While loop --> same as of for ---entry controlled loop
+//! While loop --> same as of for ---entry controlled loop
 
 // intialization
 //  i = 1; 
