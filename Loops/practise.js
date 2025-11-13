@@ -24,3 +24,13 @@ for (let i = 1; i <= n; i += 2) {
     }
 }
 console.log(series);
+
+
+// 0r this method for question 2 without if loop
+
+n =20;
+a = ["1"];
+even = 0;
+odd = 1;
+for ( i = 1; i<=n; i++) a.push (`+ ${even +=2}/${odd +=2} `);
+console.log(...a); // output: 1 + 2/3 + 4/5 + 6/7 + 8/9 + 10/11 + 12/13 + 14/15 + 16/17 + 18/19 + 20/21
