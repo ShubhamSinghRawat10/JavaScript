@@ -15,8 +15,8 @@ obj = {
 // mapp.set("UK", "Uttarakhand");
 // console.log(mapp);
 obj = [
-  { name: "Karan", course: "Btech" },
   { name: "Shubham", course: "Btech" },
+  { name: "Karan", course: "Btech" },
 ];
 
 const m = new Map([
@@ -27,24 +27,24 @@ const m = new Map([
 ]);
 // console.log(...m);
 
-// Adding Value to Map
+//! Adding Value to Map
 // set function
 m.set("CH", "Chandigarh");
 console.log(...m);
 
-// Getting value from map using Key | key or other things fllows Case Senstitivity in JS
+//! Getting value from map using Key | key or other things fllows Case Senstitivity in JS
 console.log(m.get("UK"));
 
-//deleting values from map
+//! deleting values from map
 m.delete("UK");
 console.log(m);
 
-// clear method is used to clear the map without giving any prompt
+//! clear method is used to clear the map without giving any prompt
 // m.clear(); //same as of truncate
 // console.log(m);
 
 console.log(m.size);
 
-// to check whether the data is present or not in the map
+//! To check whether the data is present or not in the map
 
 console.log(m.has("UP")); //it will return the output in Bool
