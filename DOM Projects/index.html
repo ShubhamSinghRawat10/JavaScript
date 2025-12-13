@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <h1>Calculator</h1>
+      Enter Number 1:<input type="number" id="input1" /> <br />Enter Number
+      2:<input type="number" id="input2" />
+      <br />
+      <button onclick="addNumber()">ADD</button>
+      <p>Output: <span id="outputAdd"></span></p>
+      <button onclick="subNumber()">Subtract</button>
+      <p>Output: <span id="outputsub"></span></p>
+      <button onclick="mulNumber()">Multiply</button>
+      <p>Output: <span id="outputmul"></span></p>
+      <button onclick="DevNumber()">Divide</button>
+      <p>Output: <span id="outputdiv"></span></p>
+    </div>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #a8d9e0;
+        margin: 30px;
+      }
+      div {
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #878484;
+        padding: 20px;
+        border-radius: 5px;
+        margin: auto;
+        width: 300px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #333;
+      }
+      input {
+
+        margin: 10px 0;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+      button {
+        padding: 10px 15px;
+        background-color: #8575df;
+        color: #f8f6f6;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #d43e98;
+      }
+      p {
+        font-size: 1.3em;
+        color: #555;
+      }
+    </style>
+    <script>
+      function addNumber() {
+        const num1 = document.getElementById("input1").value;
+        const num2 = document.getElementById("input2").value;
+        const res = Number(num1) + Number(num2);
+        document.getElementById("outputAdd").innerHTML = res;
+      }
+        function subNumber() {
+        const num1 = document.getElementById("input1").value;
+        const num2 = document.getElementById("input2").value;
+        const res = Number(num1) - Number(num2);
+        document.getElementById("outputsub").innerHTML = res;
+        }
+        function mulNumber() {
+        const num1 = document.getElementById("input1").value;
+        const num2 = document.getElementById("input2").value;
+        const res = Number(num1) * Number(num2);
+        document.getElementById("outputmul").innerHTML = res;
+        }
+        function DevNumber() {
+        const num1 = document.getElementById("input1").value;
+        const num2 = document.getElementById("input2").value;
+        const res = Number(num1) / Number(num2);
+        document.getElementById("outputdiv").innerHTML = res;
+      }
+    </script>
+  </body>
+</html>
+<!---
+
+
+ <p>innerHTML ---- get/ set method 
+  outerHTML 
+  text-content
+   innerText</p>
+
+ -->
