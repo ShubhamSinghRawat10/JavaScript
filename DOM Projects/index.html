@@ -8,17 +8,16 @@
   <body>
     <div>
       <h1>Calculator</h1>
-      Enter Number 1:<input type="number" id="input1" /> <br />Enter Number
-      2:<input type="number" id="input2" />
+      Enter Number 1:<input type="text" id="input1" /> <br />Enter Number
+      2:<input type="text" id="input2" />
       <br />
       <button onclick="addNumber()">ADD</button>
-      <p>Output: <span id="outputAdd"></span></p>
+    
       <button onclick="subNumber()">Subtract</button>
-      <p>Output: <span id="outputsub"></span></p>
+      
       <button onclick="mulNumber()">Multiply</button>
-      <p>Output: <span id="outputmul"></span></p>
+      
       <button onclick="DevNumber()">Divide</button>
-      <p>Output: <span id="outputdiv"></span></p>
     </div>
 
     <style>
@@ -31,6 +30,7 @@
         display:flex;
         flex-direction: column;
         justify-content: center;
+        gap:6px;
         align-items: center;
         background-color: #878484;
         padding: 20px;
@@ -66,32 +66,54 @@
       }
     </style>
     <script>
-      function addNumber() {
-        const num1 = document.getElementById("input1").value;
-        const num2 = document.getElementById("input2").value;
-        const res = Number(num1) + Number(num2);
-        document.getElementById("outputAdd").innerHTML = res;
+    function getValues() {
+      const num1 = Number(document.getElementById("input1").value);
+      const num2 = Number(document.getElementById("input2").value);
+
+      if (isNaN(num1) || isNaN(num2)) {
+        document.getElementById("output").innerHTML =
+          "Please enter valid numbers";
+        return null;
       }
-        function subNumber() {
-        const num1 = document.getElementById("input1").value;
-        const num2 = document.getElementById("input2").value;
-        const res = Number(num1) - Number(num2);
-        document.getElementById("outputsub").innerHTML = res;
-        }
-        function mulNumber() {
-        const num1 = document.getElementById("input1").value;
-        const num2 = document.getElementById("input2").value;
-        const res = Number(num1) * Number(num2);
-        document.getElementById("outputmul").innerHTML = res;
-        }
-        function DevNumber() {
-        const num1 = document.getElementById("input1").value;
-        const num2 = document.getElementById("input2").value;
-        const res = Number(num1) / Number(num2);
-        document.getElementById("outputdiv").innerHTML = res;
+      return { num1, num2 };
+    }
+
+    function addNumber() {
+      const values = getValues();
+      if (!values) return;
+      document.getElementById("output").innerHTML =
+        values.num1 + values.num2;
+    }
+
+    function subNumber() {
+      const values = getValues();
+      if (!values) return;
+      document.getElementById("output").innerHTML =
+        values.num1 - values.num2;
+    }
+
+    function mulNumber() {
+      const values = getValues();
+      if (!values) return;
+      document.getElementById("output").innerHTML =
+        values.num1 * values.num2;
+    }
+
+    function divNumber() {
+      const values = getValues();
+      if (!values) return;
+
+      if (values.num2 === 0) {
+        document.getElementById("output").innerHTML =
+          "Cannot divide by zero";
+        return;
       }
-    </script>
-  </body>
+
+      document.getElementById("output").innerHTML =
+        values.num1 / values.num2;
+    }
+  </script>
+</body>
 </html>
 <!---
 
