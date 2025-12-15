@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+ <h1>Form Filling</h1>
+ Enter your first Name: <input type="text" id="nameInput" /> 
+ <button onclick="validate()">Submit</button><br>
+ Enter your Middle Name: <input type="text" id="MidInput" /> 
+ <button onclick="validate()">Submit</button> <br>
+ Enter your Last Name: <input type="text" id="LastInput" /> 
+ <button onclick="validate()">Submit</button> <br>
+    
+</body>
+</html>
+
+<script>
+    function validate(){
+        const firstname = document.getElementById("nameInput").value;
+        console.log (firstname);
+
+        if(firstname.length <3 || typeof firstname !== "number"){
+            alert("First name must be at least 3 characters long.");
+            document.getElementById("firstname").value = "";
+        }
+        else{
+            alert("First name is valid.");
+        }
+        const middlename = document.getElementById("MidInput").value;
+        console.log (middlename);
+        if(middlename.length <3 || typeof middlename !== "number"){
+            alert("Middle name must be at least 3 characters long.");
+            document.getElementById("middlename").value = "";
+        }
+        else{
+            alert("Middle name is valid.");
+        }
+        const lastname = document.getElementById("LastInput").value;
+        console.log (lastname);
+        if(lastname.length <3 || typeof lastname !== "number"){
+            alert("Last name must be at least 3 characters long.");
+            document.getElementById("lastname").value = "";
+        }
+        else{
+            alert("Last name is valid.");
+        }
+
+    }
+</script>
