@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="maindiv">
+      <h1 id="uname">Name</h1>
+      <h2 id="fname">First Name</h2>
+
+      <p id="intro">User intro</p>
+    </div>
+
+    <script>
+      let cr = document.createElement("p");
+      cr.innerHTML = "Charan";
+
+      // document.getElementById("fname").appendChild(cr);
+      document.getElementById("fname").insertAdjacentElement("beforeend", cr);
+    </script>
+  </body>
+</html>
+<!---
+
+
+ <p>innerHTML ---- get/ set method 
+  outerHTML 
+  text-content
+   innerText</p>
+
+
+
+   take FN MN LS FN LS-> Mandatory to Enter  validation 2 fisrst 3 ln 
+   Name-- FN+MD+LN 
+
+
+
+   FN LN -- Mandatory to fill also should not be less than 3 charater should not be digit or any special charater 
+   MD-- option should fllow all the condition expect mandatory 
+    
+   Full Name: FN + SPACE + MN + SPACE + LN
+   Charanjeet Singh Sidhu
+   Charanjeet Sidhu
+
+   
+Tag of HTML in JS are known as ELEMENTS
+to create a element inside another element we use createELement method of document
+create Element -- createElement
+give the data to generated element--innerHTML, innerText
+
+insertAdjacentHTML(wheretoInsert,what to insert)
+beforebegin
+afterbegin
+beforeend
+afterend
+
+ -->
