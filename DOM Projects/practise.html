@@ -1,0 +1,34 @@
+// get a password from the user and below the password block give the mandatory
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Form Filling ... </h1>
+    Enter your Password: <input type="password" id="passInput" /> 
+    <button onclick="validatePassword()">Submit</button><br>
+    <p id="message"></p>
+<script>
+    function validatePassword(){
+        const password = document.getElementById("passInput").value;
+        console.log (password);
+        const haslowercase = /[a-z]/.test(password);
+        const messageElement = document.getElementById("message");
+        if(password.length <8  || !haslowercase.test(password)){
+            messageElement.innerHTML = "Password must be at least 8 Characters long.";
+            messageElement.innerHTML = "Password must at least contain 1 Special character.";
+            messageElement.innerHTML = "Password must at least contain one Lower case.";
+            messageElement.style.color = "red";
+        }
+        else{
+            messageElement.innerHTML = "Password is valid.";
+            messageElement.style.color = "green";
+        }
+    }
+</script>
+</body>
+</html>
