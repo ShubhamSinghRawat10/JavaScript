@@ -16,11 +16,11 @@
     function validatePassword(){
         const password = document.getElementById("passInput").value;
         console.log (password);
+        const specialchar = /[@$%^&*]/;
         const haslowercase = /[a-z]/.test(password);
         const messageElement = document.getElementById("message");
-        if(password.length <8  || !haslowercase.test(password)){
+        if(password.length <= 8  || !haslowercase.test(password)  || !specialchar.test(password)){
             messageElement.innerHTML = "Password must be at least 8 Characters long.";
-            messageElement.innerHTML = "Password must at least contain 1 Special character.";
             messageElement.innerHTML = "Password must at least contain one Lower case.";
             messageElement.style.color = "red";
         }
