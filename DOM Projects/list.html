@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Fruits List</h1>:
+    Enter your Fruits: <input type="text" id="fruitInput" />
+    <button onclick="addFruit()">Add Fruit</button>
+    <!-- <button onclick="deleteFruit()">Delete Fruit</button> -->
+    <ul id="fruitsList">
+    <script>
+        function addElementtolist(fruitsList){
+            const li=document.createElement("li");
+            li.innerHTML=fruitsList;
+            document.getElementById("fruitsList").appendChild(li);   
+        }
+        
+        function addFruit(){
+            const fruitInput = document.getElementById("fruitInput").value;
+            console.log(fruitInput);
+            if(fruitInput === ""){
+                    alert("Please enter a fruit name.");
+                    return;
+                }
+                else{
+                    alert("Fruit added Succesfully..");
+                }
+            addElementtolist(fruitInput);
+        }
+    </script>
+</body>
+</html>
