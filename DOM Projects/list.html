@@ -9,8 +9,8 @@
     <h1>Fruits List</h1>:
     Enter your Fruits: <input type="text" id="fruitInput" />
     <button onclick="addFruit()">Add Fruit</button>
-    <!-- <button onclick="deleteFruit()">Delete Fruit</button> -->
-    <ul id="fruitsList">
+    <button onclick="deleteFruit()">Delete Fruit</button>
+    <ul id="fruitsList"></ul>
     <script>
         function addElementtolist(fruitsList){
             const li=document.createElement("li");
@@ -21,15 +21,21 @@
         function addFruit(){
             const fruitInput = document.getElementById("fruitInput").value;
             console.log(fruitInput);
-            if(fruitInput === ""){
-                    alert("Please enter a fruit name.");
-                    return;
-                }
-                else{
-                    alert("Fruit added Succesfully..");
-                }
+            if(fruitInput === "" || ! isNaN(fruitInput)){
+                alert("Please enter a fruit name.");
+                return;
+            }
+            else{
+                alert("Fruit added Succesfully..");
+            }
             addElementtolist(fruitInput);
         }
+        function deleteFruit(){
+            const fruitInput = document.getElementById("fruitsList").lastElementChild;
+            console.log(fruitInput);
+            fruitInput.remove();
+            }
+    
     </script>
 </body>
 </html>
