@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Todo</h1>
+    Enter Tasks: <input type="text" id="Tasks" />
+    <button onclick="addTask()">Add Task</button>
+    <button onclick="deleteTask()">Delete Task</button>
+    <p id="created_time">
+        Tasks to be done:
+
+    </p><ul id="tasksList"></ul>
+    <script>
+        function addElementtoList(task){
+            const li=document.createElement("li");
+            li.innerHTML=task;
+            document.getElementById("tasksList").appendChild(li);   
+        }
+        
+        function addTask()
+    {
+            let datetoday = new Date();
+            const taskInput = document.getElementById("Tasks").value;
+            alert("Task added Succesfully..");
+            console.log(taskInput);
+            addElementtoList(taskInput);
+            document.getElementById("created_time").innerHTML=datetoday.toLocaleString();
+            // console.log(datetoday.toLocaleString());
+        }
+        function deleteTask(){
+            const taskInput = document.getElementById("tasksList").firstChild;
+            console.log(taskInput);
+            taskInput.remove();
+            }
+            </script>
+</body>
+</html>
