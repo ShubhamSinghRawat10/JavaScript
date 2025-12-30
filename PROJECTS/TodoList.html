@@ -8,18 +8,24 @@
 <body>
     <h1>Todo List </h1>
     Enter Tasks: <input type="text" id="Tasks" />
+    Enter Task Description: <input type="text" id="taskdesc" />
     <button onclick="addTask()">Add Task</button>
     <button onclick="deleteTask()">Delete Task</button>
     <button onclick="resetTasks()">Clear All</button>
-    <p id="created_time">
-        Tasks to be done:
-
-    </p><ul id="tasksList"></ul>
+    <ul id="tasksList"> </ul>
+    <!-- <ul>
+        <li><div id="taskdetails">
+            <h1 id="taskname"></h1>
+            <p id ="taskdescription"></p>
+            <p id ="taskcreatedAt">
+            </p>
+        </div>
+        </li>
+    </ul> -->
     <style>
       
       body{
-        display:flex;
-        flex-direction: column;
+        
         align-items: center;
         font-family: Arial, sans-serif;
         background-color: #f0f0f0;
@@ -57,9 +63,15 @@
       
     </style>
     <script>
-        function addElementtoList(task){
+        function addElementtoList(task,taskDesc,taskCreatedAt){
             const li=document.createElement("li");
-            li.innerHTML=task;
+            li.innerHTML=`<div id="taskdetails">
+            <h1 id ="taskname">${task}</h1>
+            <p id ="taskdescription">${taskDesc}</p>
+            <p id ="taskcreatedAt">${taskCreatedAt}
+            </p>
+            <button onclick="delete()">Delete Task</button>
+        </div>`;
             document.getElementById("tasksList").appendChild(li);   
         }
         
@@ -68,10 +80,12 @@
             taskInput.innerHTML="";
             }
         
+            
         function addTask()
     {
             let datetoday = new Date();
             const taskInput = document.getElementById("Tasks").value;
+            const taskDesc = document.getElementById("taskdesc").value;
             if(taskInput === "" || ! isNaN(taskInput)){
                 alert("Please enter a valid task.");
                 return;
@@ -79,15 +93,17 @@
             else{
                 alert("Task added Succesfully..");
             }
-            console.log(taskInput);
-            addElementtoList(taskInput);
-            document.getElementById("created_time").innerHTML=datetoday.toLocaleString();
+            // console.log(taskInput);
+            addElementtoList(taskInput,taskDesc,datetoday.toLocaleString());
+            // document.getElementById("taskname").innerHTML=taskInput;
+            // document.getElementById("taskdescription").innerHTML=taskDesc;
+            // document.getElementById("taskcreatedAt").innerHTML=datetoday.toLocaleString();
         }
         function deleteTask(){
             const taskInput = document.getElementById("tasksList").firstChild;
             console.log(taskInput);
             taskInput.remove();
             }
-            </script>
+        </script>
 </body>
 </html>
