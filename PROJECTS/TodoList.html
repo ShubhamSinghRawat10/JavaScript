@@ -6,14 +6,56 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Todo</h1>
+    <h1>Todo List </h1>
     Enter Tasks: <input type="text" id="Tasks" />
     <button onclick="addTask()">Add Task</button>
     <button onclick="deleteTask()">Delete Task</button>
+    <button onclick="resetTasks()">Clear All</button>
     <p id="created_time">
         Tasks to be done:
 
     </p><ul id="tasksList"></ul>
+    <style>
+      
+      body{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        justify-content: center;
+        margin: 30px ;
+      }
+        h1{
+            padding: 10px;
+            margin: 10px;
+            color: #d68330;
+            
+        }
+        input{
+            padding: 10px;
+            border: 5px solid #ccc;
+            border-radius: 10px;
+            width: 300px;
+        }
+        button{
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            margin: 7px;
+        }
+        button:hover{
+            background-color: #45a049;
+        }
+        p{
+            font-size: 1.2em;
+            color: #000;
+        }
+
+      
+    </style>
     <script>
         function addElementtoList(task){
             const li=document.createElement("li");
@@ -21,15 +63,25 @@
             document.getElementById("tasksList").appendChild(li);   
         }
         
+        function resetTasks(){
+            const taskInput = document.getElementById("tasksList");
+            taskInput.innerHTML="";
+            }
+        
         function addTask()
     {
             let datetoday = new Date();
             const taskInput = document.getElementById("Tasks").value;
-            alert("Task added Succesfully..");
+            if(taskInput === "" || ! isNaN(taskInput)){
+                alert("Please enter a valid task.");
+                return;
+            }
+            else{
+                alert("Task added Succesfully..");
+            }
             console.log(taskInput);
             addElementtoList(taskInput);
             document.getElementById("created_time").innerHTML=datetoday.toLocaleString();
-            // console.log(datetoday.toLocaleString());
         }
         function deleteTask(){
             const taskInput = document.getElementById("tasksList").firstChild;
