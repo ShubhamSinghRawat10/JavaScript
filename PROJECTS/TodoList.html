@@ -1,109 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <h1>Todo List </h1>
-    Enter Tasks: <input type="text" id="Tasks" />
-    Enter Task Description: <input type="text" id="taskdesc" />
+  </head>
+  <body>
+    <h1>Todo List</h1>
+    Enter Tasks: <input type="text" id="Tasks" /> Enter Task Description:
+    <input type="text" id="taskdesc" />
     <button onclick="addTask()">Add Task</button>
-    <button onclick="deleteTask()">Delete Task</button>
+
     <button onclick="resetTasks()">Clear All</button>
-    <ul id="tasksList"> </ul>
-    <!-- <ul>
-        <li><div id="taskdetails">
-            <h1 id="taskname"></h1>
-            <p id ="taskdescription"></p>
-            <p id ="taskcreatedAt">
-            </p>
-        </div>
-        </li>
-    </ul> -->
+    <ul id="tasksList"></ul>
     <style>
-      
-      body{
-        
+      body {
         align-items: center;
         font-family: Arial, sans-serif;
         background-color: #f0f0f0;
         justify-content: center;
-        margin: 30px ;
+        margin: 30px;
       }
-        h1{
-            padding: 10px;
-            margin: 10px;
-            color: #d68330;
-            
-        }
-        input{
-            padding: 10px;
-            border: 5px solid #ccc;
-            border-radius: 10px;
-            width: 300px;
-        }
-        button{
-            padding: 10px 15px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 7px;
-            margin: 7px;
-        }
-        button:hover{
-            background-color: #45a049;
-        }
-        p{
-            font-size: 1.2em;
-            color: #000;
-        }
-
-      
+      h1 {
+        padding: 10px;
+        margin: 10px;
+        color: #d68330;
+      }
+      input {
+        padding: 10px;
+        border: 5px solid #ccc;
+        border-radius: 10px;
+        width: 300px;
+      }
+      button {
+        padding: 10px 15px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 7px;
+        margin: 7px;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+      p {
+        font-size: 1.2em;
+        color: #000;
+      }
     </style>
     <script>
-        function addElementtoList(task,taskDesc,taskCreatedAt){
-            const li=document.createElement("li");
-            li.innerHTML=`<div id="taskdetails">
+      let counter = 1;
+      function addElementtoList(task, taskDesc, taskCreatedAt) {
+        const li = document.createElement("li");
+        li.innerHTML = `<div id="taskdetails-${counter++}">
             <h1 id ="taskname">${task}</h1>
             <p id ="taskdescription">${taskDesc}</p>
             <p id ="taskcreatedAt">${taskCreatedAt}
             </p>
-            <button onclick="delete()">Delete Task</button>
+            <button onclick="deleteTask(this)">Delete Task</button>
         </div>`;
-            document.getElementById("tasksList").appendChild(li);   
+        document.getElementById("tasksList").appendChild(li);
+      }
+
+      function resetTasks() {
+        const taskInput = document.getElementById("tasksList");
+        taskInput.innerHTML = "";
+      }
+
+      function addTask() {
+        let datetoday = new Date();
+        const taskInput = document.getElementById("Tasks").value;
+        const taskDesc = document.getElementById("taskdesc").value;
+        if (taskInput === "" || !isNaN(taskInput)) {
+          alert("Please enter a valid task.");
+          return;
+        } else {
+          alert("Task added Succesfully..");
         }
-        
-        function resetTasks(){
-            const taskInput = document.getElementById("tasksList");
-            taskInput.innerHTML="";
-            }
-        
-            
-        function addTask()
-    {
-            let datetoday = new Date();
-            const taskInput = document.getElementById("Tasks").value;
-            const taskDesc = document.getElementById("taskdesc").value;
-            if(taskInput === "" || ! isNaN(taskInput)){
-                alert("Please enter a valid task.");
-                return;
-            }
-            else{
-                alert("Task added Succesfully..");
-            }
-            // console.log(taskInput);
-            addElementtoList(taskInput,taskDesc,datetoday.toLocaleString());
-            // document.getElementById("taskname").innerHTML=taskInput;
-            // document.getElementById("taskdescription").innerHTML=taskDesc;
-            // document.getElementById("taskcreatedAt").innerHTML=datetoday.toLocaleString();
+        // console.log(taskInput);
+        addElementtoList(taskInput, taskDesc, datetoday.toLocaleString());
+      }
+      function deleteTask(button) {
+        const confirmDelete = confirm(
+          "Are you sure you want to delete this task?"
+        );
+
+        if (confirmDelete) {
+          button.parentNode.parentNode.remove();
+          alert("Task deleted successfully.");
+        } else {
+          alert("Task deletion cancelled.");
         }
-        function deleteTask(){
-            const taskInput = document.getElementById("tasksList").firstChild;
-            console.log(taskInput);
-            taskInput.remove();
-            }
-        </script>
-</body>
+      }
+    </script>
+  </body>
 </html>
