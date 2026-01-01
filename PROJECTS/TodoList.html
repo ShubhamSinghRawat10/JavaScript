@@ -58,7 +58,8 @@
             <p id ="taskcreatedAt">${taskCreatedAt}
             </p>
             <button onclick="deleteTask(this)">Delete Task</button>
-        </div>`;
+        </div>
+        <button onclick="Upgrade(this)">Upgrade Task</button>`;
         document.getElementById("tasksList").appendChild(li);
       }
 
@@ -66,7 +67,22 @@
         const taskInput = document.getElementById("tasksList");
         taskInput.innerHTML = "";
       }
+      function Upgrade(button) {
+        const taskDiv = button.previousElementSibling;
+        const taskName = taskDiv.querySelector("#taskname").innerText;
+        const taskDescription = taskDiv.querySelector("#taskdescription").innerText;
 
+        const newTaskName = prompt("Enter the new task name:", taskName);
+        const newTaskDescription = prompt("Enter the new task description:", taskDescription);
+
+        if (newTaskName !== null && newTaskName.trim() !== "") {
+          taskDiv.querySelector("#taskname").innerText = newTaskName;
+        }
+        if (newTaskDescription !== null && newTaskDescription.trim() !== "") {
+          taskDiv.querySelector("#taskdescription").innerText = newTaskDescription;
+        }
+        alert("Task upgraded successfully.");
+      }
       function addTask() {
         let datetoday = new Date();
         const taskInput = document.getElementById("Tasks").value;
@@ -81,10 +97,7 @@
         addElementtoList(taskInput, taskDesc, datetoday.toLocaleString());
       }
       function deleteTask(button) {
-        const confirmDelete = confirm(
-          "Are you sure you want to delete this task?"
-        );
-
+        const confirmDelete = confirm("Are you sure you want to delete this task?");
         if (confirmDelete) {
           button.parentNode.parentNode.remove();
           alert("Task deleted successfully.");
