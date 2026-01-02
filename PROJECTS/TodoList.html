@@ -4,16 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-  </head>
-  <body>
-    <h1>Todo List</h1>
-    Enter Tasks: <input type="text" id="Tasks" /> Enter Task Description:
-    <input type="text" id="taskdesc" />
-    <button onclick="addTask()">Add Task</button>
-
-    <button onclick="resetTasks()">Clear All</button>
-    <ul id="tasksList"></ul>
     <style>
+      #Edit {
+        display:none;
+      }
       body {
         align-items: center;
         font-family: Arial, sans-serif;
@@ -48,6 +42,22 @@
         color: #000;
       }
     </style>
+
+  </head>
+  <body>
+    <h1>Todo List</h1>
+    Enter Tasks: <input type="text" id="Tasks" /> Enter Task Description:
+    <input type="text" id="taskdesc" />
+    <button onclick="addTask()">Add Task</button>
+
+    <button onclick="resetTasks()">Clear All</button>
+    <!-- <button onclick="UpdateTask()">Edit Task</button> -->
+    <!-- <div id="Edit">
+      Enter Task Number to Edit: <input type="text" id="updatetext" />
+      Enter task description to Edit: <input type="text" id="updatedesc" />
+    </div> -->
+    <ul id="tasksList"></ul>
+    
     <script>
       let counter = 1;
       function addElementtoList(task, taskDesc, taskCreatedAt) {
@@ -59,29 +69,41 @@
             </p>
             <button onclick="deleteTask(this)">Delete Task</button>
         </div>
-        <button onclick="Upgrade(this)">Upgrade Task</button>`;
+        <button onclick="UpdateTask()">Edit Task</button>
+        <div id="Edit">
+      Enter Task Text to Edit: <input type="text" id="updatetext" />
+      Enter task description to Edit: <input type="text" id="updatedesc" />
+    <button onclick="updatedDetails()">Update Details</button></div>`;
         document.getElementById("tasksList").appendChild(li);
       }
+      function updatedDetails() {
+        const updatedText = document.getElementById("updatetext").value;
+        const updatedDesc = document.getElementById("updatedesc").value;
 
+        if (updatedText === "" || !isNaN(updatedText)) {
+          alert("Please enter a valid task.");
+          return;
+        } else {
+          alert("Task updated Succesfully..");
+        }
+
+        const taskNameElements = document.querySelectorAll("#taskname");
+        const taskDescElements = document.querySelectorAll("#taskdescription");
+
+        taskNameElements.forEach((element) => {
+          element.textContent = updatedText;
+        });
+
+        taskDescElements.forEach((element) => {
+          element.textContent = updatedDesc;
+        });
+      }
       function resetTasks() {
         const taskInput = document.getElementById("tasksList");
         taskInput.innerHTML = "";
       }
-      function Upgrade(button) {
-        const taskDiv = button.previousElementSibling;
-        const taskName = taskDiv.querySelector("#taskname").innerText;
-        const taskDescription = taskDiv.querySelector("#taskdescription").innerText;
-
-        const newTaskName = prompt("Enter the new task name:", taskName);
-        const newTaskDescription = prompt("Enter the new task description:", taskDescription);
-
-        if (newTaskName !== null && newTaskName.trim() !== "") {
-          taskDiv.querySelector("#taskname").innerText = newTaskName;
-        }
-        if (newTaskDescription !== null && newTaskDescription.trim() !== "") {
-          taskDiv.querySelector("#taskdescription").innerText = newTaskDescription;
-        }
-        alert("Task upgraded successfully.");
+      function UpdateTask() {
+        document.getElementById("Edit").style.display = "block";
       }
       function addTask() {
         let datetoday = new Date();
