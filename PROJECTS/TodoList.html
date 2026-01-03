@@ -50,11 +50,6 @@
     <button onclick="addTask()">Add Task</button>
 
     <button onclick="resetTasks()">Clear All</button>
-    <!-- <button onclick="UpdateTask()">Edit Task</button> -->
-    <!-- <div id="Edit">
-      Enter Task Number to Edit: <input type="text" id="updatetext" />
-      Enter task description to Edit: <input type="text" id="updatedesc" />
-    </div> -->
     <ul id="tasksList"></ul>
 
     <script>
@@ -100,6 +95,13 @@
       }
       function UpdateTask(button) 
       {
+        const confirmUpdate = confirm(
+          "Are you sure you want to update this task?"
+        );
+        if (!confirmUpdate) {
+          alert("Task update cancelled.");
+          return;
+        }
         currentTask = button.parentElement;
         document.getElementById("Edit").style.display = "block";
       }
@@ -114,7 +116,6 @@
         } else {
           alert("Task added Succesfully..");
         }
-        // console.log(taskInput);
         addElementtoList(taskInput, taskDesc, datetoday.toLocaleString());
       }
       function deleteTask(button) 
