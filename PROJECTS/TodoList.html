@@ -6,7 +6,7 @@
     <title>Document</title>
     <style>
       #Edit {
-        display:none;
+        display: none;
       }
       body {
         align-items: center;
@@ -42,7 +42,6 @@
         color: #000;
       }
     </style>
-
   </head>
   <body>
     <h1>Todo List</h1>
@@ -57,9 +56,10 @@
       Enter task description to Edit: <input type="text" id="updatedesc" />
     </div> -->
     <ul id="tasksList"></ul>
-    
+
     <script>
       let counter = 1;
+      let currentTask = null;
       function addElementtoList(task, taskDesc, taskCreatedAt) {
         const li = document.createElement("li");
         li.innerHTML = `<div id="taskdetails-${counter++}">
@@ -69,7 +69,7 @@
             </p>
             <button onclick="deleteTask(this)">Delete Task</button>
         </div>
-        <button onclick="UpdateTask()">Edit Task</button>
+        <button onclick="UpdateTask(this)">Edit Task</button>
         <div id="Edit">
       Enter Task Text to Edit: <input type="text" id="updatetext" />
       Enter task description to Edit: <input type="text" id="updatedesc" />
@@ -77,32 +77,31 @@
         document.getElementById("tasksList").appendChild(li);
       }
       function updatedDetails() {
-        const updatedText = document.getElementById("updatetext").value;
-        const updatedDesc = document.getElementById("updatedesc").value;
+        const newTask = document.getElementById("updatetext").value;
+        const newDesc = document.getElementById("updatedesc").value;
 
-        if (updatedText === "" || !isNaN(updatedText)) {
-          alert("Please enter a valid task.");
+        if (newTask === "" || newDesc === "") {
+          alert("Please fill both fields");
           return;
-        } else {
-          alert("Task updated Succesfully..");
         }
 
-        const taskNameElements = document.querySelectorAll("#taskname");
-        const taskDescElements = document.querySelectorAll("#taskdescription");
+        currentTask.querySelector("#taskname").innerText = newTask;
+        currentTask.querySelector("#taskdescription").innerText = newDesc;
 
-        taskNameElements.forEach((element) => {
-          element.textContent = updatedText;
-        });
+        document.getElementById("Edit").style.display = "none";
 
-        taskDescElements.forEach((element) => {
-          element.textContent = updatedDesc;
-        });
+        document.getElementById("updatetext").value = "";
+        document.getElementById("updatedesc").value = "";
+
+        alert("Task updated successfully");
       }
+
       function resetTasks() {
         const taskInput = document.getElementById("tasksList");
         taskInput.innerHTML = "";
       }
-      function UpdateTask() {
+      function UpdateTask(button) {
+        currentTask = button.parentElement;
         document.getElementById("Edit").style.display = "block";
       }
       function addTask() {
@@ -119,9 +118,11 @@
         addElementtoList(taskInput, taskDesc, datetoday.toLocaleString());
       }
       function deleteTask(button) {
-        const confirmDelete = confirm("Are you sure you want to delete this task?");
+        const confirmDelete = confirm(
+          "Are you sure you want to delete this task?"
+        );
         if (confirmDelete) {
-          button.parentNode.parentNode.remove();
+          button.parentElement.parentElement.remove();
           alert("Task deleted successfully.");
         } else {
           alert("Task deletion cancelled.");
