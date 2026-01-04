@@ -44,6 +44,7 @@
     </style>
   </head>
   <body>
+    
     <h1>Todo List</h1>
     Enter Tasks: <input type="text" id="Tasks" /> Enter Task Description:
     <input type="text" id="taskdesc" />
@@ -93,8 +94,7 @@
         const taskInput = document.getElementById("tasksList");
         taskInput.innerHTML = "";
       }
-      function UpdateTask(button) 
-      {
+      function UpdateTask(button) {
         const confirmUpdate = confirm(
           "Are you sure you want to update this task?"
         );
@@ -105,8 +105,7 @@
         currentTask = button.parentElement;
         document.getElementById("Edit").style.display = "block";
       }
-      function addTask() 
-      {
+      function addTask() {
         let datetoday = new Date();
         const taskInput = document.getElementById("Tasks").value;
         const taskDesc = document.getElementById("taskdesc").value;
@@ -118,8 +117,7 @@
         }
         addElementtoList(taskInput, taskDesc, datetoday.toLocaleString());
       }
-      function deleteTask(button) 
-      {
+      function deleteTask(button) {
         const confirmDelete = confirm(
           "Are you sure you want to delete this task?"
         );
