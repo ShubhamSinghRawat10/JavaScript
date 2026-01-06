@@ -15,6 +15,25 @@
         justify-content: center;
         margin: 30px;
       }
+      #box {
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(238, 232, 232, 0.4);
+        justify-content: center;
+        align-items: center;
+      }
+      .popup-content {
+        background-color: #f3eaea;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #0f0909;
+        width: 20%;
+        text-align: center;
+      }
       h1 {
         padding: 10px;
         margin: 10px;
@@ -44,7 +63,14 @@
     </style>
   </head>
   <body>
-    
+    <button onclick="openbox()">Open Popup</button>
+    <div id="box" class ="popup">
+      <div class ="popup-content">
+        <!-- <span class="close" onclick="closebox()">&times;</span> -->
+        <p>Welcome to the Todo List Application!</p>
+        <button onclick="closebox()">Close</button>
+    </div>
+    </div>
     <h1>Todo List</h1>
     Enter Tasks: <input type="text" id="Tasks" /> Enter Task Description:
     <input type="text" id="taskdesc" />
@@ -88,6 +114,12 @@
         document.getElementById("updatedesc").value = "";
 
         alert("Task updated successfully");
+      }
+      function openbox() {
+        document.getElementById("box").style.display = "block";
+      }
+      function closebox() {
+        document.getElementById("box").style.display = "none";
       }
 
       function resetTasks() {
