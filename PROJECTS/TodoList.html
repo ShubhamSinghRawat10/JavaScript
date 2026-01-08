@@ -63,7 +63,6 @@
     </style>
   </head>
   <body>
-    <button onclick="openbox()">Open Popup</button>
     <div id="box" class ="popup">
       <div class ="popup-content">
         <img src="todo.png" alt="Todo Image" width="310" height="100"/>
@@ -116,9 +115,12 @@
 
         alert("Task updated successfully");
       }
-      function openbox() {
-        document.getElementById("box").style.display = "block";
-      }
+      const box = document.getElementById("box");
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          box.style.display = "block";
+        }, 5000);
+      });
       function closebox() {
         document.getElementById("box").style.display = "none";
       }
