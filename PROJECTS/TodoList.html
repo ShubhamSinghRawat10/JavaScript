@@ -22,7 +22,7 @@
         top: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(238, 232, 232, 0.4);
+        background-color: rgba(247, 244, 243, 0.4);
         justify-content: center;
         align-items: center;
       }
@@ -63,13 +63,13 @@
     </style>
   </head>
   <body>
-    <div id="box" class ="popup">
-      <div class ="popup-content">
-        <img src="todo.png" alt="Todo Image" width="310" height="100"/>
+    <div id="box" class="popup">
+      <div class="popup-content">
+        <img src="todo.png" alt="Todo Image" width="310" height="100" />
         <!-- <span class="close" onclick="closebox()">&times;</span> -->
         <p>Welcome to the Todo List Application!</p>
         <button onclick="closebox()">Close It...</button>
-    </div>
+      </div>
     </div>
     <h1>Todo List</h1>
     Enter Tasks: <input type="text" id="Tasks" /> Enter Task Description:
@@ -98,6 +98,7 @@
     <button onclick="updatedDetails()">Update Details</button></div>`;
         document.getElementById("tasksList").appendChild(li);
       }
+
       function updatedDetails() {
         const newTask = document.getElementById("updatetext").value;
         const newDesc = document.getElementById("updatedesc").value;
@@ -122,9 +123,15 @@
         }, 5000);
       });
       function closebox() {
-        document.getElementById("box").style.display = "none";
+        let stop = 5;
+        const interval = setInterval(() => {
+          box.querySelector("p").innerHTML = `Closing in ${stop--} seconds...`;
+          if (stop < 0) {
+            clearInterval(interval);
+            box.style.display = "none";
+          }
+        }, 1000);
       }
-
       function resetTasks() {
         const taskInput = document.getElementById("tasksList");
         taskInput.innerHTML = "";
