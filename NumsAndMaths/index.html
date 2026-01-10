@@ -3,37 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OTP generator</title>
+    <title>OTP Generator</title>
+    <style>
+        .box {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <button onclick =otp_generate()>Generate OTP</button>
+
+    <button onclick="otp_generate()">Generate OTP</button>
     <p id="otp_display"></p>
+
     <div class="box">
-    <input type="number" id="otpp">
-    <button onclick="verify()">  Verify OTP  </button>
+        <input type="text" id="otpp" placeholder="Enter OTP">
+        <button onclick="verify()">Verify OTP</button>
     </div>
+
     <script>
-        let otp="";
-        function otp_generate(){
-            for (let i=0;i<6;i++){
-                otp+=Math.floor(Math.random()*10);
+        let otp = "";
+
+        function otp_generate() {
+            otp = ""; // reset OTP
+            let chars = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm0123456789";
+
+            for (let i = 0; i < 6; i++) {
+                let randomIndex = Math.floor(Math.random() * chars.length);
+                otp += chars[randomIndex];
             }
-            // document.getElementById("otp_display").innerHTML="";
-            document.getElementById("otp_display").innerHTML=otp;
-            // return otp;
+
+            document.getElementById("otp_display").innerHTML = otp;
+            alert("OTP generated successfully");
+            document.querySelector(".box").style.display = "block";
         }
-        // function reset_otp(){
-        // const reset_otp=document.getElementById("reset_otp");
-        // otp.innerText="";}
+
         function verify() {
             let user_otp = document.getElementById("otpp").value;
-            console.log(user_otp);
+
             if (user_otp === otp) {
-                alert("OTP verified successfully");
+                alert("OTP verified successfully ");
             } else {
                 alert("Invalid OTP");
             }
         }
     </script>
+
 </body>
 </html>
