@@ -9,9 +9,8 @@
     <button onclick =otp_generate()>Generate OTP</button>
     <p id="otp_display"></p>
     <div class="box">
-    <input type="number" id=otpp>
-    <button id="verify">  Verify OTP  </button>
-    </input>
+    <input type="number" id="otpp">
+    <button onclick="verify()">  Verify OTP  </button>
     </div>
     <script>
         let otp="";
@@ -19,24 +18,22 @@
             for (let i=0;i<6;i++){
                 otp+=Math.floor(Math.random()*10);
             }
-            document.getElementById("otp_display").innerHTML="";
+            // document.getElementById("otp_display").innerHTML="";
             document.getElementById("otp_display").innerHTML=otp;
             // return otp;
         }
         // function reset_otp(){
         // const reset_otp=document.getElementById("reset_otp");
         // otp.innerText="";}
-        function verify(){
-            const user_otp=document.getElementById("otpp").value;
-            if(user_otp == otp){
+        function verify() {
+            let user_otp = document.getElementById("otpp").value;
+            console.log(user_otp);
+            if (user_otp === otp) {
                 alert("OTP verified successfully");
-            }
-            else{
+            } else {
                 alert("Invalid OTP");
             }
-
         }
     </script>
-
 </body>
 </html>
