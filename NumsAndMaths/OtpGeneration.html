@@ -13,10 +13,12 @@
 <body>
 
     <button onclick="otp_generate(count())">Generate OTP</button>
+    <button onclick="resent()">Resent OTP</button>"
 
     <p id="otp_display"></p>
 
     <div class="box">
+        <p id="timer">  </p>
         <input type="text" id="otpp" placeholder="Enter OTP">
         <button onclick="verify()">Verify OTP</button>
     </div>
@@ -28,9 +30,10 @@ let counter = 0;
 function count(){
             counter++;
             if(counter <=30){
-                console.log(counter);
+                // console.log(counter);
                 setTimeout(count,1000);
-                console.log(" Otp will be valid till "+(30 - counter)+" seconds" );
+                // console.log(" Otp will be valid till "+(30 - counter)+" seconds" );
+                document.getElementById("timer").innerText=" Otp will be valid till "+(30 - counter)+" seconds";
             }
             else {
                 alert("otp is expired , Generate again");
