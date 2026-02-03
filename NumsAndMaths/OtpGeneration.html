@@ -1,72 +1,82 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OTP Generator</title>
     <style>
-        .box {
-            display: none;
-        }
+      .box {
+        display: none;
+      }
+      #resent {
+        display: none;
+      }
     </style>
-</head>
-<body>
-
-    <button onclick="otp_generate(count())">Generate OTP</button>
-    <button onclick="resent()">Resent OTP</button>"
+  </head>
+  <body>
+    <button id="generate" onclick="otp_generate(count())">Generate OTP</button>
+    <button id="resent" onclick="resent()">Resent OTP</button>
 
     <p id="otp_display"></p>
 
     <div class="box">
-        <p id="timer">  </p>
-        <input type="text" id="otpp" placeholder="Enter OTP">
-        <button onclick="verify()">Verify OTP</button>
+      <p id="timer"></p>
+      <input type="text" id="otpp" placeholder="Enter OTP" />
+      <button onclick="verify()">Verify OTP</button>
     </div>
 
     <script>
-        let otp = "";
-// counter 30 tk chalana hai , resent ka button aana chaiye 
-let counter = 0;
-function count(){
-            counter++;
-            if(counter <=30){
-                // console.log(counter);
-                setTimeout(count,1000);
-                // console.log(" Otp will be valid till "+(30 - counter)+" seconds" );
-                document.getElementById("timer").innerText=" Otp will be valid till "+(30 - counter)+" seconds";
-            }
-            else {
-                alert("otp is expired , Generate again");
-                document.querySelector(".box").style.display = "None";
-                otp = "";
+      let otp = "";
+      // counter 30 tk chalana hai , resent ka button aana chaiye
+      let counter = 0;
+      function count() {
+        counter++;
+        if (counter <= 30) {
+          // console.log(counter);
+          setTimeout(count, 1000);
+          // console.log(" Otp will be valid till "+(30 - counter)+" seconds" );
+          document.getElementById("timer").innerText =
+            " Otp will be valid till " + (30 - counter) + " seconds";
+        } else {
+          alert("otp is expired , Generate again");
+          document.querySelector(".box").style.display = "None";
+          otp = "";
 
-            }
+          document.getElementById("resent").style.display = "none";
+          document.getElementById("generate").style.display = "none";
+
+          document.getElementById("resent").style.display = "inline";
         }
-        function otp_generate() {
-            otp = ""; // reset OTP
-            let chars = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm0123456789";
+      }
+      function otp_generate() {
+        otp = ""; // reset OTP
+        let chars =
+          "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm0123456789";
 
-            for (let i = 0; i < 6; i++) {
-                let randomIndex = Math.floor(Math.random() * chars.length);
-                otp += chars[randomIndex];
-            }
-
-            document.getElementById("otp_display").innerHTML = otp;
-            alert("OTP generated successfully");
-            document.querySelector(".box").style.display = "block";
-            // count();
+        for (let i = 0; i < 6; i++) {
+          let randomIndex = Math.floor(Math.random() * chars.length);
+          otp += chars[randomIndex];
         }
 
-        function verify() {
-            let user_otp = document.getElementById("otpp").value;
+        document.getElementById("otp_display").innerHTML = otp;
+        alert("OTP generated successfully");
+        document.querySelector(".box").style.display = "block";
+      }
+      function resent() {
+        counter = 0;
+        otp_generate();
+        count();
+      }
 
-            if (user_otp === otp) {
-                alert("OTP verified successfully ");
-            } else {
-                alert("Invalid OTP");
-            }
+      function verify() {
+        let user_otp = document.getElementById("otpp").value;
+
+        if (user_otp === otp) {
+          alert("OTP verified successfully ");
+        } else {
+          alert("Invalid OTP");
         }
+      }
     </script>
-
-</body>
+  </body>
 </html>
