@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OTP Generator</title>
+    <title>OTP Generation </title>
     <style>
+
       body{
         background-color: aqua;
         display:flex;
@@ -29,6 +30,7 @@
       }
     </style>
   </head>
+
   <body>
     <button id="generate" onclick="otp_generate(count())">Generate OTP</button>
     <button id="resent" onclick="resent()">Resent OTP</button>
@@ -78,6 +80,7 @@
         document.querySelector(".box").style.display = "block";
         document.getElementById("generate").style.display = "none";
       }
+
       function resent() {
         counter = 0;
         otp_generate();
