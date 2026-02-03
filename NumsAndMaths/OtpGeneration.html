@@ -43,25 +43,24 @@
 
     <script>
       let otp = "";
-      // counter 30 tk chalana hai , resent ka button aana chaiye
       let counter = 0;
       function count() {
         counter++;
         if (counter <= 30) {
-          // console.log(counter);
           setTimeout(count, 1000);
-          // console.log(" Otp will be valid till "+(30 - counter)+" seconds" );
           document.getElementById("timer").innerText =
             " Otp will be valid till " + (30 - counter) + " seconds";
         } else {
           alert("otp is expired , Generate again");
-          document.querySelector(".box").style.display = "None";
+          document.querySelector(".box").style.display = "none";
           otp = "";
 
           document.getElementById("resent").style.display = "none";
           document.getElementById("generate").style.display = "none";
 
           document.getElementById("resent").style.display = "inline";
+          document.getElementById("generate").style.display = "none";
+          document.getElementById("otp_display").innerHTML = "";
         }
       }
       function otp_generate() {
@@ -77,6 +76,7 @@
         document.getElementById("otp_display").innerHTML = otp;
         alert("OTP generated successfully");
         document.querySelector(".box").style.display = "block";
+        document.getElementById("generate").style.display = "none";
       }
       function resent() {
         counter = 0;
