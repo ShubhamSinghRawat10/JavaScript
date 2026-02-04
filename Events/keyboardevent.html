@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        Keyboard Event-:
+        1.keydown
+        2.keyup
+        3.keypress
+    </p>
+    <script>
+        document.addEventListener("keydown", (event) => {
+            alert('key pressed : ${event.key}');
+            console.log("Key Down Event");
+        });
+
+        // document.addEventListener("keyup", (event) => {
+        //     alert('key released : ${event.key}');
+        //     console.log("Key Up Event");
+        // });
+        // document.addEventListener("keypress", (event) => {
+        //     alert('key pressed and released : ${event.key}');
+        //     console.log("Key Press Event");
+        // });
+        document.addEventListener("keyup", (event) => {
+            alert(`key released : ${event.code}`);
+            console.log("Key Up Event");
+        });
+        document.addEventListener("keydown", (event) => {
+            if(event.key==="Enter"){
+                alert("Enter key is pressed");
+            }
+            alert("Invalid ");
+            // console.log("Key Up Event");
+        });
+
+
+    </script>
+</body>
+</html>
