@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        
+    <li>image1</li>
+    <li>image2</li>
+    <li>image3</li>
+    <li>image4</li>
+    </ul>
+    <script>
+        function removeImage(event){
+            event.target.remove();
+        }
+        document.querySelectorAll('li').forEach(li => {
+            li.addEventListener('click', removeImage);
+        });
+    </script>
+</body>
+</html>
