@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>We are Doing Call Back</h1>
+    <script>
+      //   console.log("Hello"); //usecase-- data id password
+      //   console.log("Hello");
+        //   setTimeout(() => {
+      //   }, 2000); //timing in second 1min-1000ms
+      //   console.log("Hello"); //login  sucessfully!
+      //   console.log("Hello");
+      //   console.log("Hello");
+
+      function hello1(name, passwordprint) {
+        setTimeout(() => {
+          console.log(`User:${name}`);
+          passwordprint();
+        }, 2000);
+      }
+
+      hello1("Charan", () => {
+        hello1("charannnn");
+      });
+
+      //   hello1("Charan", lll());
+      //   function lll() {
+      //     return "Chaarnaan";
+      //   }
+      //   main(params, callbackfunction);
+      //   username
+      //   2s password
+    </script>
+  </body>
+</html>
