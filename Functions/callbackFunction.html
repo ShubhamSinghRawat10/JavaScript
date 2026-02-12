@@ -16,24 +16,45 @@
       //   console.log("Hello");
       //   console.log("Hello");
 
-      function hello1(name, passwordprint) {
-        // setTimeout(() => {
-          // }, 5000);
-            console.log(`${name}`);
+      // function hello1(name, passwordprint) {
+      //       console.log(`${name}`);
+      //       passwordprint();
+      // }
+
+      // setTimeout(() => {
+      //   console.log("Hey");
+
+      //   setTimeout(() => {
+      //     console.log("Good Morning");
+
+      //     setTimeout(() => {
+      //       console.log("Goodnight");
+      //     }, 3000);
+      //   }, 2000);
+      // }, 5000);
+
+
+      
+
+      //! Callback function || Pyramid of Doom
+      function hello1(name, time, passwordprint) {
+        setTimeout(() => {
+          console.log(`User: ${name}`);
+          if (passwordprint) {
             passwordprint();
+          }
+        }, time);
       }
 
-      setTimeout(() => {
-        console.log("Hey");
-
-        setTimeout(() => {
-          console.log("Good Morning");
-
-          setTimeout(() => {
-            console.log("Goodnight");
-          }, 3000);
-        }, 2000);
-      }, 5000);
+      hello1("Hey", 5000, () => {
+        hello1("Goodmorning", 2000, () => {
+          hello1("Good Afternoon", 3000, () => {
+            hello1("Good Evening", 2000, () => {
+              hello1("Good Night", 3000);
+            });
+          });
+        });
+      });
 
       // function greet()
       // hello1("Charan", lll());
