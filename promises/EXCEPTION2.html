@@ -20,7 +20,16 @@
 
       //   promises --> then catch
 
-      //   promisses
+        promisses
+          .then((data) => {
+            console.log("Yeh Then Hai: ", data);
+          })
+          .catch((error) => {
+            console.log("Yeh Catch Hai: ", error.message);
+          })
+          .finally(() => {
+            console.log("Yeh Finally Hai");
+          });
     </script>
   </body>
 </html>
