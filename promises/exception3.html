@@ -1,0 +1,32 @@
+<html lang="en">
+<body>
+    <h1>Exception Handling in Promises</h1>hi bhai log, aaj hum baat karenge promises ke baare mein, aur exception handling ke baare mein, toh chaliye shuru karte hain
+<script>
+    try {
+        let promise = new Promise((resolve, reject) => {
+            let sucess = true;
+
+            setTimeout(() => {
+                if (sucess) {
+                    return resolve("Promise Completed!!");
+                } else {
+                    return reject("Promise Rejected!!");
+                }
+            }, 5000);
+        });
+
+        promise
+            .then((resolve) => {
+                console.log(resolve);
+                alert("Logined Sucessfull!!");
+            })
+            .catch(() => {
+                console.log("Error in Login");
+            });
+
+    } catch (error) {
+        console.log(error.message());
+    }
+</script>
+</body>
+</html>
