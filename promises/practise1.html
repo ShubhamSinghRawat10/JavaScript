@@ -7,18 +7,18 @@
 </head>
 <body>
     <h1>Fetching  API  from dummy site</h1>
-    <p>Using Async Await
+    <p>Using Async Await</p>
     <button onclick="fetchData()">Fetch Data</button>
-</p>    
+  
+<p id ="output"></p>
     <script>
-        function onclick(fetchData) {
-    const get.ElementinnerHTML(fetchData());
-}
+     
     async function fetchData() {
     try {
         const response = await fetch("https://dummyjson.com/products");
         const data = await response.json();
         console.log(data.products);
+        document.getElementById("output").innerHTML=data.products[0].title;
     } catch (error) {
         console.log("Error fetching data: ", error.message);
     }
